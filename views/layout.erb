@@ -9,11 +9,26 @@
   <body>
 
     <nav>
-      <ul>
+      <ul class="menu">
         <li> <a href="/">Home</a> </li>
-        <li> <a href="/">Manufacturer</a> </li>
-        <li> <a href="/products">Products</a> </li>
-        <li> <a href="/new">Add Products</a> </li>
+        <li> <a href="/manufacturer">Manufacturers</a>
+          <div class="dropdown">
+            <a href="/manufacturer/new">Add Manufacturer</a>
+            <a href="/manufacturer">List of Manufacturer</a>
+          </div>
+
+
+        </li>
+        <li> <a href="/products">Products</a>
+          <div class="dropdown">
+            <a href="/new">Add Products</a>
+            <a href="/products">List of Products</a>
+          </div>
+        </li>
+
+
+
+
       </ul>
     </nav>
 

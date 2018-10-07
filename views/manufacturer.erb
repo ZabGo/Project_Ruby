@@ -1,0 +1,23 @@
+<h1>Manufacturers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>email</th>
+  </tr>
+
+  <% for manufacturer in @manufacturers %>
+  <tr>
+    <td><%= manufacturer.name %></td>
+    <td><%= manufacturer.address %></td>
+    <td><%= manufacturer.phone %></td>
+    <td><%= manufacturer.email %></td>
+  </tr>
+  <% end %>
+
+
+
+
+</table>

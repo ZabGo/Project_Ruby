@@ -8,7 +8,7 @@ table, th, tr, td {
 }
 
 h1 {
-  color: yellow;
+  color: red;
 }
 
 p {
@@ -24,4 +24,51 @@ p {
 }
 .red{
   background-color: red;
+}
+
+
+nav > .menu{
+  background-color: green;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav > .menu > li {
+  list-style: none;
+  float:left;
+  padding: 14px 16px;
+}
+
+nav > .menu > li:hover {
+  background-color: blue;
+}
+
+
+
+nav > .menu > li > a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown{
+  display:none;
+  position: absolute;
+
+}
+
+.dropdown > a{
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 12px 16px;
+  margin-top: 10px;
+}
+
+.dropdown > a:hover{
+background-color: blue;
+}
+
+li:hover > .dropdown{
+  display:block;
 }

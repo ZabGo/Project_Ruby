@@ -1,7 +1,5 @@
 <h1>PRODUCTS</h1>
 
-<p>lksdjf;laskdjf;asdlkfas;dhflaksjdfhlaksjdfklhk</p>
-
 <table>
     <tr class="table_header">
       <th>id</th>
@@ -29,6 +27,7 @@
         <td><%= type.name %></td>
       <% end %>
     <% end %>
+
     <td><%= product.quantity %></td>
 
       <% if product.quantity == 0 %>
@@ -38,11 +37,6 @@
       <% else %>
         <td class="green">  In Stock </td>
       <% end %>
-
-
-
-
-
 
     <td><%= product.description %></td>
 
