@@ -1,0 +1,38 @@
+<form class="" action="/new" method="post">
+
+  <label for="name-input">Name</label>
+  <input type="text" name="name" id="name-input"><br>
+
+  <label for="type-input">Type</label>
+  <select name="type" id="type-input">
+    <% @type.each do|type| %>
+    <option value=<%= type.id %>><%= type.name %></option>
+    <% end %>
+  </select><br>
+
+  <label for="quantity-input">Quantity</label>
+  <input type="number" name="quantity" min=1 id="quantity-input"><br>
+
+  <label for="buying_cost-input">Buying Cost</label>
+  <input type="text" name="buying_cost" id="buying_cost-input"><br>
+
+  <label for="selling_price-input">Selling Price</label>
+  <input type="text" name="selling_price" id="selling_price-input"><br>
+
+  <label for="manufacturer-input">Type</label>
+  <select name="manufacturer_id" id="manufacturer-input">
+    <% @manufacturer.each do|manufacturer| %>
+    <option value=<%= manufacturer.id %>><%= manufacturer.name %></option>
+    <% end %>
+  </select><br>
+
+  <label for="description-input">description</label> <br>
+    <textarea name="description" rows="10" cols="30" id="description-input">Enter the description of the product.</textarea><br>
+
+  <!-- <label for="name-input">Name</label>
+  <input type="text" name="name" id="name-input"> -->
+
+  <input type="submit" value="Create Order">
+
+
+</form>
