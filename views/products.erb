@@ -3,17 +3,46 @@
 <p>lksdjf;laskdjf;asdlkfas;dhflaksjdfhlaksjdfklhk</p>
 
 <table>
-    <tr>
+    <tr class="table_header">
       <th>id</th>
       <th>Name</th>
+      <th>Manufacturer</th>
       <th>Type</th>
+      <th>Quantity</th>
+      <th>Description</th>
     </tr>
 
   <% for product in @products %>
-  <tr>
+  <tr class="table_row">
     <td><%= product.id %></td>
     <td><%= product.name %></td>
-    <td><%= product.type %></td>
+
+    <% for manufacturer in @manufacturer %>
+      <% if manufacturer.id == product.manufacturer_id %>
+        <td><%= manufacturer.name %></td>
+      <% end %>
+    <% end %>
+
+    <% for type in @type %>
+      <% if product.type == type.id %>
+        <td><%= type.name %></td>
+      <% end %>
+    <% end %>
+    <td><%= product.quantity %></td>
+    <td><%= product.description %></td>
+
+    <td>
+      <form action="/<%= product.id %>/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
+    </td>
+
+    <td>
+      <form action="/<%= product.id %>/update" method="get">
+        <input type="submit" value="Update">
+      </form>
+    </td>
   </tr>
+
   <% end %>
 </table>
