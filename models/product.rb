@@ -1,14 +1,14 @@
 require_relative("../db/sql_runner.rb")
 
-class guitar
+class Product
 
   attr_accessor :name, :type, :description, :quantity, :buying_cost, :selling_price
   attr_reader :id, :manufacturer_id
 
   def initialize(options)
     @id = options["id"].to_i
-    @pickup = options["pickup"].to_i
-    @bridge = options["bridge"].to_i
+    @name = options["name"]
+    @type = options["type"].to_i
     @description = options["description"]
     @quantity = options["quantity"].to_i
     @buying_cost = options["buying_cost"]
@@ -18,7 +18,7 @@ class guitar
 
   def save()
     sql = "
-    INSERT INTO bridges
+    INSERT INTO products
     (name, type, description, quantity, buying_cost, selling_price, manufacturer_id)
     VALUES($1, $2, $3, $4, $5, $6, $7)
     RETURNING id
@@ -30,35 +30,35 @@ class guitar
   end
 
   def self.all()
-    sql = "SELECT * FROM bridges"
+    sql = "SELECT * FROM products"
     result = SqlRunner.run(sql)
-    products = result.map{|product| Bridge.new(product)}
+    products = result.map{|product| Product.new(product)}
     return products
 
   end
 
 
   def self.delete_all
-    sql = "DELETE FROM bridges"
+    sql = "DELETE FROM products"
     SqlRunner.run(sql)
   end
 
   def delete()
-    sql = "DELETE FROM bridges WHERE id = $1"
+    sql = "DELETE FROM products WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
   end
 
   def self.find(id)
     sql = "
-    SELECT * FROM bridges WHERE id = $1"
+    SELECT * FROM products WHERE id = $1"
     values = [id]
     result = SqlRunner.run(sql, values)
     return product = Product.new(result[0])
   end
 
   def update()
-    sql = "UPDATE bridges
+    sql = "UPDATE products
     SET (name, type, description, quantity, buying_cost, selling_price, manufacturer_id) = ($1, $2, $3, $4, $5, $6, $7)
     WHERE id = $8"
 
@@ -68,7 +68,27 @@ class guitar
   end
 
 
+  # def stock()
+  #   sql = "SELECT products.quantity"
+  #
+  #
+  # end
 
+  def self.by_manufacturer_asc()
+    sql = "
+    SELECT products.id, products.name AS product, manufacturers.name AS Manufacturers, products.type, products.quantity FROM products
+    INNER JOIN manufacturers
+    ON manufacturers.id = products.manufacturer_id
+    ORDER BY manufacturer.name ASC;"
+  end
+
+  def self.by_manufacturer_desc()
+    sql = "
+    SELECT products.id, products.name AS product, manufacturers.name AS Manufacturers, products.type, products.quantity FROM products
+    INNER JOIN manufacturers
+    ON manufacturers.id = products.manufacturer_id
+    ORDER BY products.quantity DESC;"
+  end
 
 
 

@@ -1,0 +1,17 @@
+<h1>PRODUCTS</h1>
+
+<table>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Type</th>
+    </tr>
+    
+  <% for product in @products %>
+  <tr>
+    <td><%= product.id %></td>
+    <td><%= product.name %></td>
+    <td><%= product.type %></td>
+  </tr>
+  <% end %>
+</table>
