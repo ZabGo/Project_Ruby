@@ -8,9 +8,20 @@ table, th, tr, td {
 }
 
 h1 {
-  color: red;
+  color: yellow;
 }
 
 p {
-  color: red;
+  color: green;
+}
+
+
+.green{
+  background-color: green;
+}
+.orange{
+  background-color: orange;
+}
+.red{
+  background-color: red;
 }

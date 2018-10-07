@@ -9,6 +9,7 @@
       <th>Manufacturer</th>
       <th>Type</th>
       <th>Quantity</th>
+      <th>Stock level</th>
       <th>Description</th>
     </tr>
 
@@ -29,6 +30,20 @@
       <% end %>
     <% end %>
     <td><%= product.quantity %></td>
+
+      <% if product.quantity == 0 %>
+        <td class="red">  Out of stock </td>
+      <% elsif product.quantity <= 5 %>
+        <td class="orange">  Low Stock </td>
+      <% else %>
+        <td class="green">  In Stock </td>
+      <% end %>
+
+
+
+
+
+
     <td><%= product.description %></td>
 
     <td>
