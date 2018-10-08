@@ -1,0 +1,23 @@
+<h1>update manufacturer</h1>
+
+
+<h1>update <% @manufacturer.name %></h1>
+
+<form class="" action="/manufacturer/<%= @manufacturer.id %>" method="post">
+
+  <label for="name-input">Name</label>
+  <input type="text" name="name" id="name-input" value="<%= @manufacturer.name %>"><br>
+
+  <label for="address-input">address</label>
+  <input type="text" name="address" id="address-input" value="<%= @manufacturer.address %>"><br><br>
+
+  <label for="phone-input">Phone</label>
+  <input type="text" name="phone" id="phone-input" value="<%= @manufacturer.phone %>"><br>
+
+  <label for="email-input">Email</label>
+  <input type="text" name="email" id="email-input" value="<%= @manufacturer.email %>"><br>
+
+  <input type="submit" value="Update">
+
+
+</form>
