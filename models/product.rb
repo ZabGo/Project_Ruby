@@ -29,6 +29,15 @@ class Product
     @id = result[0]["id"].to_i
   end
 
+  def manufacturer()
+    return Manufacturer.find(@manufacturer_id)
+  end
+
+  def type()
+    return Type.find(@type)
+
+  end
+
   def self.all()
     sql = "SELECT * FROM products"
     result = SqlRunner.run(sql)
@@ -85,20 +94,27 @@ class Product
   #
   # end
 
-  def self.by_manufacturer_asc()
+  def self.by_manufacturer(id)
     sql = "
-    SELECT products.id, products.name AS product, manufacturers.name AS Manufacturers, products.type, products.quantity FROM products
-    INNER JOIN manufacturers
-    ON manufacturers.id = products.manufacturer_id
-    ORDER BY manufacturer.name ASC;"
+    SELECT * FROM products
+    where manufacturer_id = $1"
+    value = [id]
+
+    result = SqlRunner.run(sql, value)
+    manufacturers = result.map{|manufacturer| Product.new(manufacturer)}
+    return manufacturers
+
   end
 
-  def self.by_manufacturer_desc()
+  def self.by_type(id)
     sql = "
-    SELECT products.id, products.name AS product, manufacturers.name AS Manufacturers, products.type, products.quantity FROM products
-    INNER JOIN manufacturers
-    ON manufacturers.id = products.manufacturer_id
-    ORDER BY products.quantity DESC;"
+    SELECT * FROM products
+    where type = $1"
+
+    value = [id]
+    result = SqlRunner.run(sql, value)
+    types = result.map{|type| Product.new(type)}
+    return types
   end
 
 

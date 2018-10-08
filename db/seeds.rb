@@ -114,4 +114,11 @@ product0 = Product.new({
       # product3.update()
 
 
-      p Product.all()
+      # p Product.all()
+
+
+
+      # seymour = Product.by_manufacturer(24)
+      # p seymour
+
+      p Product.by_manufacturer(36).by_type(34)

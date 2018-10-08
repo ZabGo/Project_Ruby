@@ -6,10 +6,11 @@ require_relative("../models/types.rb")
 also_reload( '../models/*' )
 
 
+
 get("/products")do
   @products = Product.all()
-  @type = Type.all()
   @manufacturer = Manufacturer.all()
+  @types = Type.all()
   erb(:products)
 end
 
@@ -18,16 +19,41 @@ get("/new")do
   @manufacturer = Manufacturer.all()
   erb(:new)
 end
+
 post("/new")do
   @product = Product.new(params)
   @product.save()
-  redirect to ("/")
+  redirect to ("/products")
 end
-post("/new")do
-  @product = Product.new(params)
-  @product.save()
-  redirect to ("/")
+
+post("/products/manufacturers")do
+  manufacturer_id = params["manufacturer_id"]
+  redirect to ("/products/manufacturers/#{manufacturer_id}")
 end
+
+get("/products/manufacturers/:id")do
+  @products = Product.by_manufacturer(params[:id])
+  @manufacturer = Manufacturer.all()
+  erb(:products)
+end
+
+post("/products/types")do
+  type_id = params["type"]
+  redirect to ("/products/types/#{type_id}")
+end
+
+get("/products/types/:id")do
+  @products = Product.by_type(params[:id])
+  @types = Type.all()
+  erb(:products)
+end
+#
+# get("/products/manufacturers")do
+#   @products = Product.by_manufacturer(params["manufacturer_id"])
+#   @manufacturer = Manufacturer.all()
+#   erb(:products)
+# end
+
 
 get("/:id/update")do
   @product = Product.find(params[:id])
