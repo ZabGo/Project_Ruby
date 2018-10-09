@@ -43,8 +43,6 @@ get("/search")do
 end
 
 get("/search/product")do
-  @manufacturer = Manufacturer.all()
-  @types = Type.all()
   input = params[:search_input]
   @list = Product.by_name(input)
   erb(:search_product)
@@ -58,24 +56,18 @@ end
 get("/products/manufacturers/:id")do
   @products = Product.by_manufacturer(params[:id])
   @manufacturer = Manufacturer.all()
+  @types = Type.all()
   erb(:products)
+  # redirect to ("/products")
 end
 
 
 
-get("/products/manufacturers/:id")do
-  @products = Product.by_manufacturer(params[:id])
-  @manufacturer = Manufacturer.all()
-  erb(:products)
-end
-
-
-
-
-
-
-
-
+# get("/products/manufacturers/:id")do
+#   @products = Product.by_manufacturer(params[:id])
+#   @manufacturer = Manufacturer.all()
+#   erb(:products)
+# end
 
 post("/products/types")do
   type_id = params["type"]
@@ -85,8 +77,11 @@ end
 get("/products/types/:id")do
   @products = Product.by_type(params[:id])
   @types = Type.all()
+  @manufacturer = Manufacturer.all()
   erb(:products)
+    # redirect to ("/products")
 end
+
 #
 # get("/products/manufacturers")do
 #   @products = Product.by_manufacturer(params["manufacturer_id"])

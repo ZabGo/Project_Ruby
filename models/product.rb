@@ -35,20 +35,21 @@ class Product
 
   def type()
     return Type.find(@type)
-
   end
 
   def self.all()
     sql = "SELECT * FROM products"
     result = SqlRunner.run(sql)
-    products = result.map{|product| Product.new(product)}
-    return products
 
+    products = result.map{|product| Product.new(product)}
+
+    return products
   end
 
 
   def self.delete_all
     sql = "DELETE FROM products"
+
     SqlRunner.run(sql)
   end
 
@@ -61,20 +62,19 @@ class Product
   def self.delete(id)
     sql = "DELETE FROM products WHERE id = $1"
     values = [id]
+
     SqlRunner.run(sql, values)
   end
-
-
-
-
-
 
   def self.find(id)
     sql = "
     SELECT * FROM products WHERE id = $1"
     values = [id]
+
     result = SqlRunner.run(sql, values)
-    return product = Product.new(result[0])
+    product = Product.new(result[0])
+
+    return product
   end
 
   def update()
@@ -101,19 +101,22 @@ class Product
     value = [id]
 
     result = SqlRunner.run(sql, value)
-    manufacturers = result.map{|manufacturer| Product.new(manufacturer)}
-    return manufacturers
 
+    manufacturers = result.map{|manufacturer| Product.new(manufacturer)}
+
+    return manufacturers
   end
 
   def self.by_type(id)
     sql = "
     SELECT * FROM products
     where type = $1"
-
     value = [id]
+
     result = SqlRunner.run(sql, value)
+
     types = result.map{|type| Product.new(type)}
+
     return types
   end
 
@@ -127,6 +130,7 @@ class Product
         array.push(product)
       end
     end
+    
     return array
   end
 

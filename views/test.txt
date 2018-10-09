@@ -1,0 +1,8 @@
+<form action="/products/types" method="post">
+  <select class="" name="type">
+    <% for type in @types %>
+      <option value="<%=type.id%>"><%= type.name %></option>
+    <% end %>
+  </select>
+  <input type="submit" value="Filter">
+</form>

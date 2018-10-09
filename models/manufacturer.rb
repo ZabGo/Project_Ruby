@@ -28,21 +28,26 @@ class Manufacturer
 
   def self.all()
     sql = "SELECT * FROM manufacturers"
-    result = SqlRunner.run(sql)
-    manufacturers = result.map{|manufacturer| Manufacturer.new(manufacturer)}
-    return manufacturers
 
+    result = SqlRunner.run(sql)
+
+    manufacturers = result.map{|manufacturer| Manufacturer.new(manufacturer)}
+
+    return manufacturers
   end
 
 
   def self.delete_all
     sql = "DELETE FROM manufacturers"
+
     SqlRunner.run(sql)
   end
 
   def self.delete(id)
     sql = "DELETE FROM manufacturers WHERE id = $1"
+
     values = [id]
+
     SqlRunner.run(sql, values)
   end
 
@@ -50,8 +55,10 @@ class Manufacturer
     sql = "
     SELECT * FROM manufacturers WHERE id = $1"
     values = [id]
+
     result = SqlRunner.run(sql, values)
-    return manufacturer = Manufacturer.new(result[0])
+    manufacturer = Manufacturer.new(result[0])
+    return manufacturer
   end
 
   def update()
@@ -73,29 +80,9 @@ class Manufacturer
         array.push(manufacturer)
       end
     end
+
     return array
   end
 
       # if manufacturer.name.include? input == true
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end
