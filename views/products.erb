@@ -65,6 +65,7 @@
     <td><%= product.quantity %></td>
 
       <% if product.quantity == 0 %>
+        <% Email.notification %>
         <td class="red">  Out of stock </td>
       <% elsif product.quantity <= 5 %>
         <td class="orange">  Low Stock </td>
