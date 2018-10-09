@@ -130,12 +130,20 @@ class Product
         array.push(product)
       end
     end
-    
+
     return array
   end
 
 
+  def self.low_stock(product)
+    stock = []
+    notified = []
 
+    stock.push(product) unless stock.include?(product)
+    notified.push(product) unless stock.include?(product)
+
+    Email.notification(product) unless notified.include?(product)
+  end
 
 
 

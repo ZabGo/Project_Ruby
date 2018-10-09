@@ -36,15 +36,17 @@ end
 #   redirect to("/search/#{input}")
 # end
 
+
+
 get("/search")do
-  input = params[:search_input]
-  @list = Manufacturer.by_name(input)
+  input_manufacturer = params[:search_manufacturer]
+  @list_manufacturer = Manufacturer.by_name(input_manufacturer)
   erb(:search)
 end
 
 get("/search/product")do
-  input = params[:search_input]
-  @list = Product.by_name(input)
+  input_product = params[:search_product]
+  @list_products = Product.by_name(input_product)
   erb(:search_product)
 end
 
@@ -58,7 +60,6 @@ get("/products/manufacturers/:id")do
   @manufacturer = Manufacturer.all()
   @types = Type.all()
   erb(:products)
-  # redirect to ("/products")
 end
 
 
@@ -79,7 +80,6 @@ get("/products/types/:id")do
   @types = Type.all()
   @manufacturer = Manufacturer.all()
   erb(:products)
-    # redirect to ("/products")
 end
 
 #

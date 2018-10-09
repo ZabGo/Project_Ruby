@@ -1,6 +1,7 @@
 require_relative("../models/manufacturer.rb")
 require_relative("../models/product.rb")
 require_relative("../models/types.rb")
+require_relative("../models/mail.rb")
 
 
 
@@ -82,31 +83,31 @@ product0 = Product.new({
     "selling_price" => "20",
     "manufacturer_id" => manufacturer2.id
       })
-  # product2 = Product.new({
-  #   "name" => "Bass bridge 4 strings",
-  #   "type" =>"Strings",
-  #   "description" => "String spacing 19 mm, Size 80 x 43 mm, Chrome",
-  #   "quantity" => "50",
-  #   "buying_cost" => "10",
-  #   "selling_price" => "20",
-  #   "manufacturer_id" => manufacturer2.id
-  #     })
-  #
-  # product3 = Product.new({
-  #   "name" => "STEVE HARRIS P-BASS",
-  #   "type" =>"Pick up",
-  #   "description" => "high output, Anilco V magnet, 4 strings",
-  #   "quantity" => "10",
-  #   "buying_cost" => "30",
-  #   "selling_price" => "60",
-  #   "manufacturer_id" => manufacturer3.id
-  #     })
+  product2 = Product.new({
+    "name" => "Bass bridge 4 strings",
+    "type" => string.id,
+    "description" => "String spacing 19 mm, Size 80 x 43 mm, Chrome",
+    "quantity" => "1",
+    "buying_cost" => "10",
+    "selling_price" => "20",
+    "manufacturer_id" => manufacturer2.id
+      })
+
+  product3 = Product.new({
+    "name" => "STEVE HARRIS P-BASS",
+    "type" => pickup.id,
+    "description" => "high output, Anilco V magnet, 4 strings",
+    "quantity" => "1",
+    "buying_cost" => "30",
+    "selling_price" => "60",
+    "manufacturer_id" => manufacturer3.id
+      })
 
 
       product0.save()
       product1.save()
-      # product2.save()
-      # product3.save()
+      product2.save()
+      product3.save()
 
       # product0.delete()
 
@@ -129,7 +130,11 @@ product0 = Product.new({
       #
       # p result
 
-      if manufacturer1.name.include?("Sey")
-        p manufacturer1.name
+      # if manufacturer1.name.include?("Sey")
+      #   p manufacturer1.name
+      #
+      # end
 
-      end
+
+
+      Product.low_stock(product3)

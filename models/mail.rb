@@ -18,14 +18,14 @@ class Email
       end
   end
 
-  def self.notification()
+  def self.notification(product)
     Email.setup()
 
     mail = Mail.new do
       from    'guitarsclan.gmail.com'
       to      'xavier.godard@live.fr'
-      subject 'test inside sinatra'
-      body    'test content'
+      subject "Notification for item #{product.id}"
+      body    "The stock for the item #{product.id} is low. Only #{product.quantity} in stock"
     end
 
     mail.deliver!

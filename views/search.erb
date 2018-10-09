@@ -1,7 +1,7 @@
 <form class="" action="/search" method="get">
 
   <label for="search-manufacturer">Search by manufacturer:</label>
-  <input type="text" name="search_input" id="search-manufacturer">
+  <input type="text" name="search_manufacturer" id="search-manufacturer">
 
   <input type="submit" value="Search" >
 </form>
@@ -9,7 +9,7 @@
 <form class="" action="/search/product" method="get">
 
   <label for="search-product">Search by Product name:</label>
-  <input type="text" name="search_input" id="search-product">
+  <input type="text" name="search_product" id="search-product">
   <input type="submit" value="Search" >
 
 </form>
@@ -25,13 +25,13 @@
     <th>phone</th>
     <th>email</th>
   </tr>
-  <% for item in @list %>
+  <% for item in @list_manufacturer %>
   <tr>
-    <th><%= item.id %></th>
-    <th><%= item.name %></th>
-    <th><%= item.address %></th>
-    <th><%= item.phone %></th>
-    <th><%= item.email %></th>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.address %></td>
+    <td><%= item.phone %></td>
+    <td><%= item.email %></td>
   </tr>
   <% end %>
 </table>
