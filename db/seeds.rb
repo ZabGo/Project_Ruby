@@ -124,7 +124,12 @@ product0 = Product.new({
       # p Product.by_manufacturer(36).by_type(34)
 
 
-      input = 'Seymour'
-      result = Manufacturer.by_name(input)
+      # input = 'Seymour'
+      # result = Manufacturer.by_name(input)
+      #
+      # p result
 
-      p result
+      if manufacturer1.name.include?("Sey")
+        p manufacturer1.name
+
+      end

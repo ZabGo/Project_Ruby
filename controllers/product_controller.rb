@@ -42,6 +42,14 @@ get("/search")do
   erb(:search)
 end
 
+get("/search/product")do
+  @manufacturer = Manufacturer.all()
+  @types = Type.all()
+  input = params[:search_input]
+  @list = Product.by_name(input)
+  erb(:search_product)
+end
+
 post("/products/manufacturers")do
   manufacturer_id = params["manufacturer_id"]
   redirect to ("/products/manufacturers/#{manufacturer_id}")

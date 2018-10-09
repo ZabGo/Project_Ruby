@@ -122,9 +122,9 @@ class Product
     array = []
     list = Product.all()
 
-    for manufacturer in list
-      if manufacturer.name == input
-        array.push(manufacturer)
+    for product in list
+      if product.name == input
+        array.push(product)
       end
     end
     return array

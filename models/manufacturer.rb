@@ -76,7 +76,7 @@ class Manufacturer
     return array
   end
 
-
+      # if manufacturer.name.include? input == true
 
 
 

@@ -7,7 +7,6 @@
 </form>
 
 <form class="" action="/search/product" method="get">
-
   <label for="search-product">Search by Product name:</label>
   <input type="text" name="search_input" id="search-product">
   <input type="submit" value="Search" >
@@ -21,17 +20,17 @@
   <tr class="table_header">
     <th>id</th>
     <th>Name</th>
-    <th>address</th>
-    <th>phone</th>
-    <th>email</th>
+    <th>manufacturer</th>
+    <th>type</th>
+    <th>description</th>
   </tr>
   <% for item in @list %>
   <tr>
     <th><%= item.id %></th>
     <th><%= item.name %></th>
-    <th><%= item.address %></th>
-    <th><%= item.phone %></th>
-    <th><%= item.email %></th>
+    <th><%= item.manufacturer %></th>
+    <th><%= item.type %></th>
+    <th><%= item.description %></th>
   </tr>
   <% end %>
 </table>
