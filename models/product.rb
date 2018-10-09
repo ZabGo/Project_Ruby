@@ -118,6 +118,18 @@ class Product
   end
 
 
+  def self.by_name(input)
+    array = []
+    list = Product.all()
+
+    for manufacturer in list
+      if manufacturer.name == input
+        array.push(manufacturer)
+      end
+    end
+    return array
+  end
+
 
 
 

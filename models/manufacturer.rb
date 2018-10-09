@@ -64,7 +64,17 @@ class Manufacturer
     SqlRunner.run(sql, values)
   end
 
+  def self.by_name(input)
+    array = []
+    list = Manufacturer.all()
 
+    for manufacturer in list
+      if manufacturer.name == input
+        array.push(manufacturer)
+      end
+    end
+    return array
+  end
 
 
 

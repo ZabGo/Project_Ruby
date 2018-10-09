@@ -121,4 +121,10 @@ product0 = Product.new({
       # seymour = Product.by_manufacturer(24)
       # p seymour
 
-      p Product.by_manufacturer(36).by_type(34)
+      # p Product.by_manufacturer(36).by_type(34)
+
+
+      input = 'Seymour'
+      result = Manufacturer.by_name(input)
+
+      p result

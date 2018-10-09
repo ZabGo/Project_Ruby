@@ -26,6 +26,22 @@ post("/new")do
   redirect to ("/products")
 end
 
+# get("/search")do
+# # @list = Manufacturer.all
+#   erb(:search)
+# end
+#
+# post("/search")do
+#   input = params["search_input"]
+#   redirect to("/search/#{input}")
+# end
+
+get("/search")do
+  input = params[:search_input]
+  @list = Manufacturer.by_name(input)
+  erb(:search)
+end
+
 post("/products/manufacturers")do
   manufacturer_id = params["manufacturer_id"]
   redirect to ("/products/manufacturers/#{manufacturer_id}")
@@ -36,6 +52,22 @@ get("/products/manufacturers/:id")do
   @manufacturer = Manufacturer.all()
   erb(:products)
 end
+
+
+
+get("/products/manufacturers/:id")do
+  @products = Product.by_manufacturer(params[:id])
+  @manufacturer = Manufacturer.all()
+  erb(:products)
+end
+
+
+
+
+
+
+
+
 
 post("/products/types")do
   type_id = params["type"]

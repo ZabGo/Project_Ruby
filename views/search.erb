@@ -1,0 +1,30 @@
+<form class="" action="/search" method="get">
+
+  <label for="search-manufacturer">Search by manufacturer:</label>
+  <input type="text" name="search_input" id="search-manufacturer">
+
+  <input type="submit" value="Search" >
+
+</form>
+
+
+<h1>results</h1>
+
+<table>
+  <tr class="table_header">
+    <th>id</th>
+    <th>Name</th>
+    <th>address</th>
+    <th>phone</th>
+    <th>email</th>
+  </tr>
+  <% for item in @list %>
+  <tr>
+    <th><%= item.id %></th>
+    <th><%= item.name %></th>
+    <th><%= item.address %></th>
+    <th><%= item.phone %></th>
+    <th><%= item.email %></th>
+  </tr>
+  <% end %>
+</table>
