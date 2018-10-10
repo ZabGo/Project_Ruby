@@ -103,6 +103,14 @@ end
 post("/:id")do
   product = Product.new(params)
   product.update()
+  if product.quantity == 0
+    Email.out_of_stock(product)
+  elsif product.quantity < 5
+    Email.low_stock(product)
+  end
+
+    # Product.low_stock(product)
+
   redirect to("/products")
 end
 

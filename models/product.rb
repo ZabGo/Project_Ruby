@@ -138,14 +138,21 @@ class Product
 
 
   def self.low_stock(product)
+    send_notification = true
     notifications = Email.all()
+
     for email in notifications
-      if email.product_id.to_s.include?(product.id.to_s) == false
-        Email.notification(product)
-        email = Email.new({"product_id" => product.id.to_i})
-        email.save()
+      if email.product_id == product.id
+        send_notification = false
       end
     end
+
+    if send_notification == true
+        Email.notification(product)
+        email = Email.new({"product_id" => product.id})
+        email.save()
+    end
+
   end
     #
     # stock.push(product) unless stock.include?(product)

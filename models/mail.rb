@@ -3,7 +3,8 @@ require("mail")
 
 class Email
 
-  attr_reader :id, :product_id
+  attr_accessor :product_id
+  attr_reader :id
 
   def initialize(options)
     @id = options["id"].to_i
@@ -45,7 +46,7 @@ class Email
     return notifications
   end
 
-  def self.notification(product)
+  def self.low_stock(product)
     Email.setup()
 
     mail = Mail.new do
@@ -53,6 +54,39 @@ class Email
       to      'xavier.godard@live.fr'
       subject "Notification for item #{product.id}"
       body    "The stock for the item #{product.id} is low. Only #{product.quantity} in stock"
+    end
+
+    mail.deliver!
+  end
+
+  def self.out_of_stock(product)
+    Email.setup()
+
+    mail = Mail.new do
+      from    'guitarsclan.gmail.com'
+      to      'xavier.godard@live.fr'
+      subject "Notification for item #{product.id}"
+      text_part do
+        body 'This is plain text'
+      end
+
+      html_part do
+        content_type 'text/html; charset=UTF-8'
+        body "<p>Contact the manufacturer #{product.manufacturer.name} to order more #{product.name} the product #{product.id} <a href='http://localhost:4567/manufacturer/#{product.manufacturer_id}/details'>Click here</a> </p>"
+      end
+    end
+
+    mail.deliver!
+  end
+
+  def self.to_manufacturer(manufacturer, subject1, body1)
+    Email.setup()
+
+    mail = Mail.new do
+      from    'guitarsclan.gmail.com'
+      to      "#{manufacturer.email}"
+      subject subject1
+      body body1
     end
 
     mail.deliver!
