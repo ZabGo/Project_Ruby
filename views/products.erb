@@ -14,7 +14,7 @@
         <select class="" name="manufacturer_id">
           <!-- <option value="" selected>No Filter</option> -->
           <% for manufacturer in @manufacturer %>
-            <option value="<%=manufacturer.id%>"><%= manufacturer.name %></option>
+            <option value="<%=manufacturer.id%>"><%= manufacturer.name %></a></option>
           <% end %>
         </select>
 
@@ -60,7 +60,7 @@
   <tr class="table_row">
     <td><%= product.id %></td>
     <td><%= product.name %></td>
-    <td><%= product.manufacturer.name %></td>
+    <td><a href="/manufacturer/<%= product.manufacturer_id %>/details"><%= product.manufacturer.name %></a></td>
     <td><%= product.type.name %></td>
     <td><%= product.quantity %></td>
 

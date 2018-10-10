@@ -109,8 +109,6 @@ post("/:id")do
     Email.low_stock(product)
   end
 
-    # Product.low_stock(product)
-
   redirect to("/products")
 end
 

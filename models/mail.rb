@@ -53,7 +53,14 @@ class Email
       from    'guitarsclan.gmail.com'
       to      'xavier.godard@live.fr'
       subject "Notification for item #{product.id}"
-      body    "The stock for the item #{product.id} is low. Only #{product.quantity} in stock"
+      text_part do
+        body 'This is plain text'
+      end
+
+      html_part do
+        content_type 'text/html; charset=UTF-8'
+        body "<p> The stock of the product #{product.name} is low.</p> <p>Contact the manufacturer #{product.manufacturer.name} to order more #{product.name}<a href='http://localhost:4567/manufacturer/#{product.manufacturer_id}/details'>Click here</a> </p>"
+      end
     end
 
     mail.deliver!
