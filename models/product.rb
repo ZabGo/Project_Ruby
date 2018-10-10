@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner.rb")
+require_relative("../models/mail.rb")
 
 class Product
 
@@ -126,7 +127,7 @@ class Product
     list = Product.all()
 
     for product in list
-      if product.name == input
+      if product.name.chomp.include?(input.chomp) == true
         array.push(product)
       end
     end
@@ -136,14 +137,23 @@ class Product
 
 
   def self.low_stock(product)
-    stock = []
-    notified = []
-
-    stock.push(product) unless stock.include?(product)
-    notified.push(product) unless stock.include?(product)
-
-    Email.notification(product) unless notified.include?(product)
+    notifications = Email.all()
+    for email in notifications
+      if email.product_id.to_s.include?(product.id.to_s) == false
+        Email.notification(product)
+        email = Email.new({"product_id" => product.id.to_i})
+        email.save()
+      end
+    end
   end
+    #
+    # stock.push(product) unless stock.include?(product)
+    #
+    # unless notified.include?(product)
+    #   Email.notification(product)
+    #   notified.push(product)
+    # end
+
 
 
 

@@ -109,6 +109,20 @@ product0 = Product.new({
       product2.save()
       product3.save()
 
+
+
+
+
+      email1 = Email.new({"product_id" => product3.id})
+      email1.save()
+
+      email2 = Email.new({"product_id" => product2.id})
+      email1.save()
+
+      Product.low_stock(product2)
+
+
+
       # product0.delete()
 
       # product3.name = "blabla awesome"
@@ -137,4 +151,4 @@ product0 = Product.new({
 
 
 
-      Product.low_stock(product3)
+      # Product.low_stock(product3)
