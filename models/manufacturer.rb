@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner.rb")
+require("pry")
 
 class Manufacturer
 
@@ -72,11 +73,14 @@ class Manufacturer
   end
 
   def self.by_name(input)
+    x = input.to_s
     array = []
     list = Manufacturer.all()
 
     for manufacturer in list
-      if manufacturer.name == input
+
+      if manufacturer.name.chomp.include?(x.chomp) == true
+              # binding.pry
         array.push(manufacturer)
       end
     end
@@ -84,5 +88,6 @@ class Manufacturer
     return array
   end
 
-      # if manufacturer.name.include? input == true
+      # if manufacturer.name == input
+      # manufacturer.name.chomp.include?(input.chomp) == true
 end

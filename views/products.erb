@@ -12,6 +12,7 @@
       <form action="/products/manufacturers" method="post">
 
         <select class="" name="manufacturer_id">
+          <!-- <option value="" selected>No Filter</option> -->
           <% for manufacturer in @manufacturer %>
             <option value="<%=manufacturer.id%>"><%= manufacturer.name %></option>
           <% end %>
@@ -67,7 +68,7 @@
 
         <td class="red">  Out of stock </td>
       <% elsif product.quantity <= 5 %>
-      
+
         <td class="orange">  Low Stock </td>
       <% else %>
         <td class="green">  In Stock </td>

@@ -123,11 +123,12 @@ class Product
 
 
   def self.by_name(input)
+    x = input.to_s
     array = []
     list = Product.all()
 
     for product in list
-      if product.name.chomp.include?(input.chomp) == true
+      if product.name.chomp.include?(x.chomp) == true
         array.push(product)
       end
     end

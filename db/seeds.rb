@@ -113,15 +113,15 @@ product0 = Product.new({
 
 
 
-      email1 = Email.new({"product_id" => product3.id})
-      email1.save()
+      # email1 = Email.new({"product_id" => product3.id})
+      # email1.save()
+      #
+      # email2 = Email.new({"product_id" => product2.id})
+      # email1.save()
+      #
+      # Product.low_stock(product2)
 
-      email2 = Email.new({"product_id" => product2.id})
-      email1.save()
-
-      Product.low_stock(product2)
-
-
+      Manufacturer.by_name('Seymour')
 
       # product0.delete()
 

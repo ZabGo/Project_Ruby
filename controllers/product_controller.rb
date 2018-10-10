@@ -1,5 +1,6 @@
 require("sinatra")
 require("sinatra/contrib/all")
+require("pry")
 require_relative("../models/product.rb")
 require_relative("../models/manufacturer.rb")
 require_relative("../models/types.rb")
@@ -41,6 +42,7 @@ end
 
 get("/search")do
   input_manufacturer = params[:search_manufacturer]
+# binding.pry
   @list_manufacturer = Manufacturer.by_name(input_manufacturer)
   erb(:search)
 end
