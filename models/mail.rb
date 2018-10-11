@@ -32,7 +32,7 @@ class Email
 
     mail = Mail.new do
       from    'guitarsclan.gmail.com'
-      to      'xavier.godard@live.fr'
+      to      'ac.user256@gmail.com'
       subject "Notification for item #{product.id}"
       text_part do
         body 'This is plain text'
@@ -57,7 +57,7 @@ class Email
 
     mail = Mail.new do
       from    'guitarsclan.gmail.com'
-      to      'xavier.godard@live.fr'
+      to      'ac.user256@gmail.com'
       subject "Notification for item #{product.id}"
       text_part do
         body 'This is plain text'

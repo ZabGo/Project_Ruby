@@ -128,7 +128,7 @@ post("/product/:id")do
 
   redirect to("/products")
 end
-#end
+
 
 ##################
 #Delete a product#

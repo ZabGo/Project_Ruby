@@ -46,7 +46,9 @@ h1 {
 }
 
 p {
-  color: green;
+  color: black;
+  padding: 10px;
+  font-size: 20px;
 }
 
 
@@ -60,12 +62,27 @@ p {
   background-color: red;
 }
 
+nav{
+  width:100%;
+  background-color: #FF680A;
+}
+.menu{
+  width: 50%;
+  margin:auto;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.menu > li{
+    flex-grow: 1;
+}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #FF680A;
+
 }
 
 li {
