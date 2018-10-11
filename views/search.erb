@@ -1,22 +1,27 @@
 <form class="" action="/search" method="get">
-
   <label for="search-manufacturer">Search by manufacturer:</label>
-  <input type="text" name="search_manufacturer" id="search-manufacturer">
+  <input type="text" name="search_manufacturer" id="search-manufacturer" value="">
 
   <input type="submit" value="Search">
 </form>
 
-
-<form class="" action="/search/product" method="get">
-
+<form class="" action="/search" method="get">
   <label for="search-product">Search by Product name:</label>
-  <input type="text" name="search_product" id="search-product">
-  <input type="submit" value="Search" >
+  <input type="text" name="search_product" id="search-product" value="">
 
+  <input type="submit" value="Search" >
+</form>
+
+<form class="" action="/search" method="get">
+  <label for="search-description">Search by Product description:</label>
+  <input type="text" name="search_description" id="search-description" value="">
+
+  <input type="submit" value="Search" >
 </form>
 
 
 <h1>results</h1>
+<% if @input_manufacturer != nil %>
 
 <table>
   <tr class="table_header">
@@ -26,6 +31,7 @@
     <th>phone</th>
     <th>email</th>
   </tr>
+
   <% for item in @list_manufacturer %>
   <tr>
     <td><%= item.id %></td>
@@ -36,3 +42,28 @@
   </tr>
   <% end %>
 </table>
+<% end %>
+
+
+
+<% if @input_product != nil || @input_description != nil%>
+<table>
+  <tr class="table_header">
+    <th>id</th>
+    <th>Name</th>
+    <th>manufacturer</th>
+    <th>type</th>
+    <th>description</th>
+  </tr>
+  
+  <% for item in @list_products %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.find_manufacturer.name %></td>
+    <td><%= item.find_type.name %></td>
+    <td><%= item.description %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>

@@ -1,11 +1,70 @@
-<form action="/products/types" method="post">
-  <select class="" name="type">
-    <% for type in @types %>
-      <option value="<%=type.id%>"><%= type.name %></option>
-    <% end %>
-  </select>
-  <input type="submit" value="Filter">
+<form class="" action="/search" method="get">
+
+  <label for="search-manufacturer">Search by manufacturer:</label>
+  <input type="text" name="search_manufacturer" id="search-manufacturer" value="">
+
+  <input type="submit" value="Search">
 </form>
+
+
+<form class="" action="/search" method="get">
+
+  <label for="search-product">Search by Product name:</label>
+  <input type="text" name="search_product" id="search-product" value="">
+  <input type="submit" value="Search" >
+
+</form>
+
+<form class="" action="/search" method="get">
+
+  <label for="search-description">Search by Product description:</label>
+  <input type="text" name="search_description" id="search-description" value="">
+  <input type="submit" value="Search" >
+
+</form>
+
+
+
+
+
+
+<form action="index.html" method="post">
+
+  <input type="submit" value="Create Order">
+
+</form>
+
+
+
+
+
+
+
+
+
+<form class="" action="/search" method="get">
+
+  <label for="search-manufacturer">Search by manufacturer:</label>
+  <input type="text" name="search_manufacturer" id="search-manufacturer" value="">
+
+  <label for="search-product">Search by Product name:</label>
+  <input type="text" name="search_product" id="search-product" value="">
+
+  <label for="search-description">Search by Product description:</label>
+  <input type="text" name="search_description" id="search-description" value="">
+  <input type="submit" value="Search" >
+
+</form>
+
+
+
+
+
+==============
+search product
+
+
+
 
 
 <form class="" action="/search" method="get">
@@ -13,5 +72,230 @@
   <label for="search-manufacturer">Search by manufacturer:</label>
   <input type="text" name="search_manufacturer" id="search-manufacturer">
 
-  <input type="submit" value="Search">
+  <input type="submit" value="Search" >
 </form>
+
+<form class="" action="/search/product" method="get">
+
+  <label for="search-product">Search by Product name:</label>
+  <input type="text" name="search_product" id="search-product">
+
+  <input type="submit" value="Search" >
+</form>
+
+<form class="" action="/search/description" method="get">
+
+  <label for="search-description">Search by Product description:</label>
+  <input type="text" name="search_description" id="search-description">
+  <input type="submit" value="Search" >
+
+</form>
+
+
+<h1>results</h1>
+
+<table>
+  <tr class="table_header">
+    <th>id</th>
+    <th>Name</th>
+    <th>manufacturer</th>
+    <th>type</th>
+    <th>description</th>
+  </tr>
+  <% for item in @list_products %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.find_manufacturer.name %></td>
+    <td><%= item.find_type.name %></td>
+    <td><%= item.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+=========================
+
+
+
+# get("/search")do
+#   input_manufacturer = params[:search_manufacturer]
+# # binding.pry
+#   @list_manufacturer = Manufacturer.by_name(input_manufacturer)
+#   erb(:search)
+# end
+#
+# get("/search/product")do
+#   input_product = params[:search_product]
+#   @list_products = Product.by_name(input_product)
+#   erb(:search_product)
+# end
+#
+# get("/search/description")do
+#   input_description = params[:search_description]
+#   @list_products = Product.by_description(input_description)
+#   erb(:search_product)
+# end
+
+# post("/products/manufacturers")do
+#   manufacturer_id = params["manufacturer_id"]
+#   redirect to ("/products/manufacturers/#{manufacturer_id}")
+# end
+#
+# get("/products/manufacturers/:id")do
+#   @products = Product.by_manufacturer(params[:id])
+#   @manufacturer = Manufacturer.all()
+#   @types = Type.all()
+#   erb(:products)
+# end
+#
+# post("/products/types")do
+#   type_id = params["type"]
+#   redirect to ("/products/types/#{type_id}")
+# end
+#
+# get("/products/types/:id")do
+#   @products = Product.by_type(params[:id])
+#   @types = Type.all()
+#   @manufacturer = Manufacturer.all()
+#   erb(:products)
+# end
+
+======================
+
+
+#
+# get("/products/manufacturers")do
+#   @products = Product.by_manufacturer(params["manufacturer_id"])
+#   @manufacturer = Manufacturer.all()
+#   erb(:products)
+# end
+
+
+====================
+produt manufacturer
+
+
+<h1>PRODUCTS</h1>
+
+<table>
+
+  <tr class="filters">
+    <th>
+      <form action="/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
+    </th>
+
+    <th>
+      <form action="/product/manufacturer" method="get">
+        <select class="" name="manufacturer_id">
+          <% @manufacturer.each do|manufacturer| %>
+          <option value=<%= manufacturer.id %>><%= manufacturer.name %></option>
+          <% end %>
+
+        </select>
+      </form>
+    </th>
+
+    <th>
+      <form action="/delete" method="post">
+            <input type="submit" value="Delete">
+      </form></th>
+
+
+    <th>      <form action="/delete" method="post">
+            <input type="submit" value="Delete">
+          </form></th>
+    <th>      <form action="/delete" method="post">
+            <input type="submit" value="Delete">
+          </form></th>
+    <th>Stock level</th>
+    <th>Description</th>
+  </tr>
+
+    <tr class="table_header">
+      <th>id</th>
+      <th>Name</th>
+      <th>Manufacturer</th>
+      <th>Type</th>
+      <th>Quantity</th>
+      <th>Stock level</th>
+      <th>Description</th>
+    </tr>
+
+  <% for product in @products %>
+  <tr class="table_row">
+    <td><%= product.id %></td>
+    <td><%= product.name %></td>
+
+    <% for manufacturer in @manufacturer %>
+      <% if manufacturer.id == product.manufacturer_id %>
+        <td><%= manufacturer.name %></td>
+      <% end %>
+    <% end %>
+
+    <% for type in @type %>
+      <% if product.type == type.id %>
+        <td><%= type.name %></td>
+      <% end %>
+    <% end %>
+
+    <td><%= product.quantity %></td>
+
+      <% if product.quantity == 0 %>
+        <% Email.notification %>
+        binding.pry
+        <td class="red">  Out of stock </td>
+      <% elsif product.quantity <= 5 %>
+        <td class="orange">  Low Stock </td>
+      <% else %>
+        <td class="green">  In Stock </td>
+      <% end %>
+
+    <td><%= product.description %></td>
+
+    <td>
+      <form action="/<%= product.id %>/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
+    </td>
+
+    <td>
+      <form action="/<%= product.id %>/update" method="get">
+        <input type="submit" value="Update">
+      </form>
+    </td>
+  </tr>
+
+  <% end %>
+</table>
+
+
+
+========================
+
+
+#################
+#Create an email#
+#################
+#   def save()
+#     sql = "
+#     INSERT INTO notifications (product_id)
+#     VALUES ($1)
+#     RETURNING id
+#     "
+#     values = [@product_id]
+#     result = SqlRunner.run(sql, values)
+#     @id = result[0]["id"].to_i
+#   end
+#
+# #
+#
+#   def self.all()
+#     sql = "SELECT * FROM notifications"
+#     results = SqlRunner.run(sql)
+#     notifications = results.map{|email| Email.new(email)}
+#     return notifications
+#   end

@@ -1,46 +1,33 @@
 <h1>PRODUCTS</h1>
 
 <table>
-
   <tr class="filters">
     <th></th>
 
     <th></th>
 
-    <th>
-      <% if @manufacturer != nil %>
-      <form action="/products/manufacturers" method="post">
-
+    <form action="/products/filters" method="post">
+      <th>
         <select class="" name="manufacturer_id">
-          <!-- <option value="" selected>No Filter</option> -->
+          <option value=""  selected>No Filter</option>
           <% for manufacturer in @manufacturer %>
             <option value="<%=manufacturer.id%>"><%= manufacturer.name %></a></option>
           <% end %>
         </select>
-
-        <input type="submit" value="Filter">
-      </form>
-      <% end %>
-    </th>
-
+      </th>
 
       <th>
-        <% if @types != nil %>
-        <form action="/products/types" method="post">
-          <select class="" name="type">
+        <select class="" name="type">
+            <option value="" selected>No Filter</option>
+            <% for type in @types %>
+              <option value="<%=type.id%>"><%= type.name %></option>
+            <% end %>
+        </select>
+        <input type="submit" value="Filter">
+      </th>
+    </form>
 
-              <% for type in @types %>
-                <option value="<%=type.id%>"><%= type.name %></option>
-              <% end %>
-
-          </select>
-          <input type="submit" value="Filter">
-        </form>
-        <% end %>
-    </th>
-
-
-    <th></th>
+    <th> <a href="/products">Cancel filters</a> </th>
 
     <th></th>
     <th></th>
@@ -60,15 +47,13 @@
   <tr class="table_row">
     <td><%= product.id %></td>
     <td><%= product.name %></td>
-    <td><a href="/manufacturer/<%= product.manufacturer_id %>/details"><%= product.manufacturer.name %></a></td>
-    <td><%= product.type.name %></td>
+    <td><a href="/manufacturer/<%= product.manufacturer_id %>/details"><%= product.find_manufacturer.name %></a></td>
+    <td><%= product.find_type.name %></td>
     <td><%= product.quantity %></td>
 
       <% if product.quantity == 0 %>
-
         <td class="red">  Out of stock </td>
       <% elsif product.quantity <= 5 %>
-
         <td class="orange">  Low Stock </td>
       <% else %>
         <td class="green">  In Stock </td>
@@ -83,12 +68,7 @@
     </td>
 
     <td>
-
-
-      <a href="/<%= product.id %>/update">Update</a>
-      <!-- <form action="/<%= product.id %>/update" method="get">
-        <input type="submit" value="Update">
-      </form> -->
+      <a href="/product/<%= product.id %>/update">Update</a>
     </td>
   </tr>
 

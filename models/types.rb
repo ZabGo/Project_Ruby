@@ -28,7 +28,7 @@ class Type
   def self.all()
     sql = "SELECT * FROM types"
     result = SqlRunner.run(sql)
-    types = result.map{|types| Product.new(types)}
+    types = result.map{|types| Type.new(types)}
     return types
 
   end

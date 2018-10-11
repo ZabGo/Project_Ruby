@@ -30,11 +30,11 @@ class Product
     @id = result[0]["id"].to_i
   end
 
-  def manufacturer()
+  def find_manufacturer()
     return Manufacturer.find(@manufacturer_id)
   end
 
-  def type()
+  def find_type()
     return Type.find(@type)
   end
 
@@ -121,6 +121,26 @@ class Product
     return types
   end
 
+  def self.by_manufacturer_and_type(manufacturer_id, type_id)
+    sql = "SELECT * FROM products WHERE manufacturer_id  = $1 AND type = $2"
+    values = [manufacturer_id, type_id]
+
+    result = SqlRunner.run(sql, values)
+
+    array = result.map{|result| Product.new(result)}
+
+    return array
+  end
+
+
+
+
+
+
+
+
+
+
 
   def self.by_name(input)
     x = input.to_s
@@ -129,6 +149,20 @@ class Product
 
     for product in list
       if product.name.chomp.include?(x.chomp) == true
+        array.push(product)
+      end
+    end
+
+    return array
+  end
+
+  def self.by_description(input)
+    x = input.to_s
+    array = []
+    list = Product.all()
+
+    for product in list
+      if product.description.chomp.include?(x.chomp) == true
         array.push(product)
       end
     end
