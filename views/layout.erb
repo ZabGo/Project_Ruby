@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/reset.css">
     <link rel="stylesheet" href="/style.css">
     <title>Guitar</title>
   </head>
@@ -11,16 +12,16 @@
     <nav>
       <ul class="menu">
         <li> <a href="/">Home</a> </li>
-        
-        <li> <a href="/manufacturer">Manufacturers</a>
-          <div class="dropdown">
+        <li class="dropdown">
+          <a class="dropbtn"  href="/manufacturer">Manufacturers</a>
+          <div class="dropdown-content">
             <a href="/manufacturer/new">Add Manufacturer</a>
             <a href="/manufacturer">List of Manufacturer</a>
           </div>
         </li>
 
-        <li> <a href="/products">Products</a>
-          <div class="dropdown">
+        <li class="dropdown"> <a class="dropbtn" href="/products">Products</a>
+          <div class="dropdown-content">
             <a href="/product/new">Add Products</a>
             <a href="/products">List of Products</a>
           </div>
@@ -29,6 +30,7 @@
         <li> <a href="/search">Search</a> </li>
       </ul>
     </nav>
+
 
     <%= yield %>
 

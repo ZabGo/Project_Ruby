@@ -6,6 +6,9 @@
     <th>Address</th>
     <th>Phone</th>
     <th>email</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
   <% for manufacturer in @manufacturers %>
@@ -16,15 +19,15 @@
     <td><%= manufacturer.email %></td>
     <td>
       <form action="/manufacturer/<%= manufacturer.id %>/delete" method="post">
-        <input type="submit" value="Delete">
+        <input class="button" type="submit" value="Delete">
       </form>
     </td>
     <td>
       <form action="/manufacturer/<%= manufacturer.id %>/update" method="get">
-        <input type="submit" value="Update">
+        <input class="button" type="submit" value="Update">
       </form>
     </td>
-    <td> <a href="/manufacturer/<%= manufacturer.id %>/details">Details</a> </td>
+    <td> <a class="button noborder" href="/manufacturer/<%= manufacturer.id %>/details">Details</a> </td>
   </tr>
   <% end %>
 </table>

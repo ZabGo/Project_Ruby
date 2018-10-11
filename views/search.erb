@@ -2,21 +2,23 @@
   <label for="search-manufacturer">Search by manufacturer:</label>
   <input type="text" name="search_manufacturer" id="search-manufacturer" value="">
 
-  <input type="submit" value="Search">
+  <input class="button"  type="submit" value="Search">
 </form>
+<hr>
 
 <form class="" action="/search" method="get">
   <label for="search-product">Search by Product name:</label>
   <input type="text" name="search_product" id="search-product" value="">
 
-  <input type="submit" value="Search" >
+  <input class="button" type="submit" value="Search" >
 </form>
+<hr>
 
 <form class="" action="/search" method="get">
   <label for="search-description">Search by Product description:</label>
   <input type="text" name="search_description" id="search-description" value="">
 
-  <input type="submit" value="Search" >
+  <input class="button"  type="submit" value="Search" >
 </form>
 
 
@@ -55,7 +57,7 @@
     <th>type</th>
     <th>description</th>
   </tr>
-  
+
   <% for item in @list_products %>
   <tr>
     <td><%= item.id %></td>

@@ -2,7 +2,7 @@ require("mail")
 
 class Email
 
-  
+
 ##########
 #set SMTP#
 ##########

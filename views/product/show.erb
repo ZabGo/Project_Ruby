@@ -1,38 +1,28 @@
 <h1>PRODUCTS</h1>
 
+<form class="filters" action="/products/filters" method="post">
+
+    <select class="" name="manufacturer_id">
+      <option value=""  selected>No Filter</option>
+      <% for manufacturer in @manufacturer %>
+        <option value="<%=manufacturer.id%>"><%= manufacturer.name %></a></option>
+      <% end %>
+    </select>
+
+
+
+    <select class="" name="type">
+        <option value="" selected>No Filter</option>
+        <% for type in @types %>
+          <option value="<%=type.id%>"><%= type.name %></option>
+        <% end %>
+    </select>
+    <input class="button" type="submit" value="Filter">
+</form>
+
+<a class="button block" href="/products">Cancel filters</a>
+
 <table>
-  <tr class="filters">
-    <th></th>
-
-    <th></th>
-
-    <form action="/products/filters" method="post">
-      <th>
-        <select class="" name="manufacturer_id">
-          <option value=""  selected>No Filter</option>
-          <% for manufacturer in @manufacturer %>
-            <option value="<%=manufacturer.id%>"><%= manufacturer.name %></a></option>
-          <% end %>
-        </select>
-      </th>
-
-      <th>
-        <select class="" name="type">
-            <option value="" selected>No Filter</option>
-            <% for type in @types %>
-              <option value="<%=type.id%>"><%= type.name %></option>
-            <% end %>
-        </select>
-        <input type="submit" value="Filter">
-      </th>
-    </form>
-
-    <th> <a href="/products">Cancel filters</a> </th>
-
-    <th></th>
-    <th></th>
-  </tr>
-
     <tr class="table_header">
       <th>id</th>
       <th>Name</th>
@@ -41,6 +31,8 @@
       <th>Quantity</th>
       <th>Stock level</th>
       <th>Description</th>
+      <th></th>
+      <th></th>
     </tr>
 
   <% for product in @products %>
@@ -62,13 +54,13 @@
     <td><%= product.description %></td>
 
     <td>
-      <form action="/<%= product.id %>/delete" method="post">
-        <input type="submit" value="Delete">
+      <form  action="/<%= product.id %>/delete" method="post">
+        <input class="button" type="submit" value="Delete">
       </form>
     </td>
 
     <td>
-      <a href="/product/<%= product.id %>/update">Update</a>
+      <a class="button" href="/product/<%= product.id %>/update">Update</a>
     </td>
   </tr>
 
