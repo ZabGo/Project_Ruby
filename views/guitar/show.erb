@@ -1,0 +1,22 @@
+<h1>list of guitars</h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Pickup</th>
+    <th>Bridge</th>
+    <th>String</th>
+  </tr>
+
+  <% for guitar in @guitars %>
+  <tr>
+    <td><%= guitar.id %></td>
+    <td><%= guitar.name %></td>
+    <td><%= guitar.pickup_id %></td>
+    <td><%= guitar.bridge_id %></td>
+    <td><%= guitar.string_id %></td>
+  </tr>
+
+  <% end %>
+</table>

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS notifications;
+DROP TABLE IF EXISTS guitars;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS types;
 DROP TABLE IF EXISTS manufacturers;
@@ -29,7 +29,10 @@ CREATE TABLE products(
 );
 
 
-CREATE TABLE notifications(
+CREATE TABLE guitars(
   id SERIAL8 PRIMARY KEY,
-  product_id INT8 REFERENCES products(id) ON DELETE CASCADE
+  name VARCHAR(255),
+  pickup_id INT8 REFERENCES products(id) ON DELETE CASCADE,
+  bridge_id INT8 REFERENCES products(id) ON DELETE CASCADE,
+  string_id INT8 REFERENCES products(id) ON DELETE CASCADE
 );

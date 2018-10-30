@@ -1,0 +1,29 @@
+<h1>Guitars</h1>
+
+      <form  action="/guitars/new" method="post">
+        <label for="name-input">Name</label>
+        <input type="text" name="name" value="" id="name-input">
+
+        <label for="pickup-input">Pickup</label>
+        <select class="" name="pickup_id" id="pickup-input">
+          <% for product in @products %>
+          <option value="<%= product.id %>"><%= product.name %></option>
+          <% end %>
+        </select>
+
+        <label for="bridge-input">Bridge</label>
+        <select class="" name="bridge_id" id="bridge-input">
+          <% for product in @products %>
+          <option value="<%= product.id %>"><%= product.name %></option>
+          <% end %>
+        </select>
+
+        <label for="string-input">Pickup</label>
+        <select class="" name="string_id" id="string-input">
+          <% for product in @products %>
+          <option value="<%= product.id %>"><%= product.name %></option>
+          <% end %>
+        </select>
+
+        <input class="button" type="submit" value="Add to guitar">
+      </form>

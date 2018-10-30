@@ -3,14 +3,15 @@ body{
   padding: 10px;
 }
 
+.main{
+  width = 80%;
+  margin = auto;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
 }
-
-/* table, th, tr, td {
-  border: 1px solid black;
-} */
 
 .table_header > th {
   text-align: left;
